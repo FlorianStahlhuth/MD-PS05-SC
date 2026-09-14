@@ -1,6 +1,6 @@
 ---
 title: "Problem Set 05: Regression with One Categorical Variable"
-author: "Your Name"
+author: "Florian Stahlhuth"
 date: last-modified
 date-format: "[Last modified on] MMMM DD, YYYY HH:mm:ss zzz"
 format: 
@@ -79,7 +79,12 @@ Create a visual model of these data (a graph) that will allow you to conduct an 
 ::: {.callout-important icon="false" collapse="false" title="Problem 1 Answers"}
 ```{r}
 # Type your code and comments inside the code chunk
-
+ggplot(hate_crimes, aes(x = trump_support, y = hate_crimes)) + 
+  geom_boxplot(fill = "wheat") + 
+  theme_bw() +
+  labs(x = "Level of Trump support",
+       y = "Number of hate crimes per 100k individuals",
+       title = "Boxplot for the relationship between Trump support and the number of hate crimes")
 
 ```
 :::
@@ -89,7 +94,7 @@ Create a visual model of these data (a graph) that will allow you to conduct an 
 :::
 
 ::: {.callout-important icon="false" collapse="false" title="Problem 2 Answers"}
--   Delete this and put your text answer here.
+-   We observe that states with lower Trump support recorded a higher number of hate crimes in the 10 days after the 2016 US election. This coincides with my expectation as Trump won the election and as a result hate crimes are more likely in states with higher support for the Democratic party.
 :::
 
 ::: {.callout-note icon="false" title="Problem 3"}
@@ -98,7 +103,8 @@ Create a model that examines the relationship between hate crime rates and the l
 
 ::: {.callout-important icon="false" collapse="false" title="Problem 3 Answers"}
 ```{r}
-# Type your code and comments inside the code chunk
+hate_mod <- lm(hate_crimes ~ trump_support, hate_crimes)
+get_regression_table(hate_mod)
 
 ```
 :::
@@ -108,7 +114,7 @@ What does the intercept mean in this regression table?
 :::
 
 ::: {.callout-important icon="false" collapse="false" title="Problem 4 Answers"}
--   Delete this and put your text answer here.
+-   In this regression table the intercept `r round(get_regression_table(hate_mod)$estimate[1], 3)` corresponds to the mean number of hate crimes per 100k individuals recorded in the 10 days after the 2016 election in states with high Trump support. This mean is `r round(mean(subset(hate_crimes, trump_support == "high")$hate_crimes, na.rm = TRUE), 3)`.
 :::
 
 ::: {.callout-note icon="false" title="Problem 5"}
