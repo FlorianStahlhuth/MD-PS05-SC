@@ -114,7 +114,7 @@ What does the intercept mean in this regression table?
 :::
 
 ::: {.callout-important icon="false" collapse="false" title="Problem 4 Answers"}
--   In this regression table the intercept `r round(get_regression_table(hate_mod)$estimate[1], 3)` corresponds to the predicted number of hate crimes per 100k individuals recorded in the 10 days after the 2016 election in states with "high" Trump support. This is also the mean number of hate crimes per 100k individuals after the 2016 election in states with "high" Trump support `r round(mean(subset(hate_crimes, trump_support == "high")$hate_crimes, na.rm = TRUE), 3)`.
+-   In this regression table the intercept `r round(get_regression_table(hate_mod)$estimate[1], 3)` corresponds to the predicted number of hate crimes per 100k individuals recorded in the 10 days after the 2016 election in states with "high" Trump support. This is also the mean number of hate crimes per 100k individuals after the 2016 election in states with "high" Trump support which calculates to `r round(mean(subset(hate_crimes, trump_support == "high")$hate_crimes, na.rm = TRUE), 3)`.
 :::
 
 ::: {.callout-note icon="false" title="Problem 5"}
@@ -140,7 +140,7 @@ round(unname(predict(hate_mod, tibble(trump_support = "high"))),2)
 
 ```
 
--   The predictions reveal that the model estimates that hate crimes in the 10 days after the 2016 presidential election are on average more frequent in states that show "low" Trump support. This is however not a general statement for the frequency of hate crimes.
+-   The predictions reveal that the model estimates hate crimes in the 10 days after the 2016 presidential election to be on average more frequent in states that show "low" Trump support. This is however not a general statement for the frequency of hate crimes.
 :::
 
 ::: {.callout-note icon="false" title="Problem 7"}
@@ -269,7 +269,7 @@ high_hate_crimes |>
   kable()
 ```
 
--   The states with the highest rate of hate crimes are `r high_hate_crimes[1,]$state`, `r high_hate_crimes[2,]$state`, `r high_hate_crimes[3,]$state`, `r high_hate_crimes[4,]$state` and `r high_hate_crimes[5,]$state`. The level of Trump support is "low" in all of them. This is not surprising since our previous analyses already revealed that "low" Trump support is associated to a higher number of hate crimes per 100,000 people in the 10 days after the 2016 election.
+-   The states with the highest rate of hate crimes are `r high_hate_crimes[1,]$state`, `r high_hate_crimes[2,]$state`, `r high_hate_crimes[3,]$state`, `r high_hate_crimes[4,]$state` and `r high_hate_crimes[5,]$state`. The level of Trump support is "low" in all of them. This is not surprising since our previous analysis already revealed that "low" Trump support is associated to a higher number of hate crimes per 100,000 people in the 10 days after the 2016 election.
 :::
 
 # Hate Crimes and Unemployment
